@@ -3,7 +3,7 @@ services:
   - name: backend
     instance_type: free
     type: web
-    dockerfile: backend/Dockerfile
+    dockerfile: my-app/backend/Dockerfile
     ports:
       - port: 5000
     env:
