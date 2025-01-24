@@ -1,0 +1,13 @@
+build:
+  - name: frontend
+    path: .
+    builder: nodejs
+    command: |
+      npm install
+      npm run build
+
+  - name: backend
+    path: backend
+    builder: python
+    command: |
+      pip install -r requirements.txt
