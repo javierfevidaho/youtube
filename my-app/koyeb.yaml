@@ -1,13 +1,16 @@
-build:
-  - name: frontend
-    path: .
-    builder: nodejs
-    command: |
-      npm install
-      npm run build
-
-  - name: backend
-    path: backend
-    builder: python
-    command: |
-      pip install -r requirements.txt
+name: youtube-app
+services:
+  - type: web
+    name: frontend
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+  
+  - type: web 
+    name: backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    env:
+      - name: GOOGLE_CREDENTIALS
+        value: ${{secrets.GOOGLE_CREDENTIALS}}
